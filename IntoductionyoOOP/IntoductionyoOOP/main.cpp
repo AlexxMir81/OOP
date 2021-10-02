@@ -28,16 +28,22 @@ public:
 	}
 
 	//        Constructors:
-	Point()
+	/*Point()
 	{
 		x = y = 0;
 		cout << "DefaultConstructor:\t" << this << endl;
-	}
+	}*/
 	Point(double x=0, double y=0)
 	{
 		this->x = x;
 		this->y = y;
 		cout << "Constructor:\t" << this << endl;
+	}
+	Point(const Point& other)
+	{
+		this->x = other.x;
+		this->y = other.y;
+		cout << "CopyConstructor:\t" << this << endl;
 	}
 	~Point()
 	{
@@ -45,7 +51,7 @@ public:
 	}
 
 	//        Methods:
-	double distance(Point other)
+	double distance(Point& other)const
 	{
 		double x_distance = this->x - other.x;
 		double y_distance = this->y - other.y;
@@ -60,9 +66,10 @@ public:
 };
 
 
-double distance(Point A, Point B);
+double distance(const Point& A,const Point& B);
 //#define STRUCT_POINT
-//#define distance
+#define DISTANCE
+//#define CONSTRUCTORS_CHECK
 void main()
 {
 	setlocale(LC_ALL, "Russian");
@@ -78,7 +85,7 @@ void main()
 	cout << (*pA).x << tab << (*pA).y << endl;
 #endif
 
-#ifdef distance
+#ifdef DISTANCE
 
 	Point A;
 	A.set_x(2);
@@ -89,20 +96,27 @@ void main()
 	Point B;
 	B.set_x(4);
 	B.set_y(5);
-
+	cout << "\n------------------------\n";
 	cout << B.distance(A) << endl;
+	cout << "\n------------------------\n";
 	cout << A.distance(B) << endl;
+	cout << "\n------------------------\n";
 	cout << distance(A, B) << endl;
+	cout << "\n------------------------\n";
 	cout << distance(B, A) << endl;
 #endif 
 
+#ifdef CONSTRUCTORS_CHECK
 	Point A;   //Default constuctor
 	A.print();
 	Point B(2,3);
 	B.print();
+	Point C = B;   //Copy constuctor
+	C.print();
+#endif // constructors_check
 }
 
-double distance(Point A, Point B)
+double distance(const Point& A, const Point& B)
 {
 	//double x_dist = A.get_x() - B.get_x();
 	//double y_dist = A.get_y() - B.get_y();
