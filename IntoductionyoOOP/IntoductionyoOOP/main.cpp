@@ -67,12 +67,14 @@ void main()
 	cout << B.distance(A) << endl;
 	cout << A.distance(B) << endl;
 	cout << distance(A, B) << endl;
+	cout << distance(B, A) << endl;
 }
 
 double distance(Point A, Point B)
 {
 	//double x_dist = A.get_x() - B.get_x();
 	//double y_dist = A.get_y() - B.get_y();
-	double distance = sqrt(((A.get_x() - B.get_x()) * (A.get_x() - B.get_x())) + ((A.get_y() - B.get_y()) * (A.get_y() - B.get_y())));
-		return distance;
+	//return sqrt(pow(A.get_x() - B.get_x(),2) + pow(A.get_y() - B.get_y(),2));	
+	return pow(pow(A.get_x() - B.get_x(),2) + pow(A.get_y() - B.get_y(),2),.5);
+
 }
