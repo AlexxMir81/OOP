@@ -2,7 +2,7 @@
 using namespace std;
 
 #define tab "\t"
-
+#define delimiter "\n---------------------------------\n"
 
 //создание структуры
 class Point
@@ -50,7 +50,41 @@ public:
 		cout << "Destructor:\t\t" << this << endl;
 	}
 
+//               Operators
+	Point& operator=(const Point& other)
+	{
+		this->x = other.x;
+		this->y = other.y;
+		cout << "CopyAssigment:\t\t" << this << endl;
+		return *this;
+
+	}
+
+	Point& operator+=(const Point& other)
+	{
+		//Point res;
+		this->x += other.x;
+		this->y += other.y;
+		return *this;
+
+	}
+	// increment/decrement
+	Point& operator++() ///prefix increment
+	{
+		this->x++;
+		this->y++;
+		return *this;
+	}
+	Point& operator++(int) // suffix increment
+	{
+		Point old = *this;
+		this->x++;
+		this->y++;
+		return old;
+	}
+
 	//        Methods:
+
 	double distance(Point& other)const
 	{
 		double x_distance = this->x - other.x;
@@ -59,17 +93,47 @@ public:
 		return distance;
 	}
 
-	void print() const
+	void print()const
 	{
 		cout << "X=" << x << "\t" << "Y=" << y << endl;
 	}
 };
 
+Point operator+(const Point& left, const Point& right)
+{
+	Point res;
+	res.set_x(left.get_x() + right.get_x());
+	res.set_y(left.get_y() + right.get_y());
+	return res;
+}
 
-double distance(const Point& A,const Point& B);
+Point operator-(const Point& left, const Point& right)
+{
+	Point res(left.get_x() - right.get_x(), left.get_y() - right.get_y());
+	return res;
+}
+
+bool operator==(const Point& left, const Point& right)
+{
+	if ((left.get_x() == right.get_x()) && (left.get_y() == right.get_y()))
+		return true;
+	else
+		return false;
+}
+
+double distance(const Point& A, const Point& B)
+{
+	//double x_dist = A.get_x() - B.get_x();
+	//double y_dist = A.get_y() - B.get_y();
+	//return sqrt(pow(A.get_x() - B.get_x(),2) + pow(A.get_y() - B.get_y(),2));	
+	return pow(pow(A.get_x() - B.get_x(), 2) + pow(A.get_y() - B.get_y(), 2), .5);
+
+}
 //#define STRUCT_POINT
-#define DISTANCE
+//#define DISTANCE
 //#define CONSTRUCTORS_CHECK
+//#define ASSIGMENT_CHECK
+//#define ARIPHMET_OPER
 void main()
 {
 	setlocale(LC_ALL, "Russian");
@@ -113,14 +177,56 @@ void main()
 	B.print();
 	Point C = B;   //Copy constuctor
 	C.print();
+	Point D(C);
+	Point E;
+	E = C;
+	E.print();
+	A = B;
+	A.print();
 #endif // constructors_check
+#ifdef ASSIGMENT_CHECK
+
+	int a, b, c;
+	a = b = c = 0;
+
+	Point A, B, C;
+	cout << delimiter << endl;
+	A = B = C = Point(15, 18);
+	cout << delimiter << endl;
+	A.print();
+	B.print();
+	C.print();
+#endif
+
+#ifdef ARIPHMET_OPER
+	Point A(2, 3);
+	Point B(3, 4);
+	A += B;
+	B.print();
+	Point C = A + B;
+	C.print();
+	C = A - B;
+	C.print();
+	Point D = C++;
+	C.print();
+	D.print();
+
+#endif // ARIPHMET_OPER
+
+	Point A(2, 3);
+	//Point B(3, 4);
+	Point B = A;
+	if (A == B++)
+	{
+		cout << "Точки равные" << endl;
+	}
+	else
+	{
+		cout << "Точки разные" << endl;
+	}
+
 }
 
-double distance(const Point& A, const Point& B)
-{
-	//double x_dist = A.get_x() - B.get_x();
-	//double y_dist = A.get_y() - B.get_y();
-	//return sqrt(pow(A.get_x() - B.get_x(),2) + pow(A.get_y() - B.get_y(),2));	
-	return pow(pow(A.get_x() - B.get_x(),2) + pow(A.get_y() - B.get_y(),2),.5);
 
-}
+
+
