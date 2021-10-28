@@ -1,4 +1,4 @@
-#include<iostream>
+п»ї#include<iostream>
 using namespace std;
 
 class Fraction;
@@ -9,9 +9,9 @@ Fraction operator-(Fraction left, Fraction right);
 
 class Fraction
 {
-	int integer; //целая часть
-	int numenator; // числитель
-	int denominator; // знаменатель
+	int integer; //С†РµР»Р°СЏ С‡Р°СЃС‚СЊ
+	int numenator; // С‡РёСЃР»РёС‚РµР»СЊ
+	int denominator; // Р·РЅР°РјРµРЅР°С‚РµР»СЊ
 
 public:
 	int get_integer()const
@@ -66,7 +66,7 @@ public:
 	{
 		this->integer = integer;
 		this->numenator = numenator;
-		set_denominator(denominator);  //когда нужна фильтрация данных, даже внутри класса лучше использовать set методы
+		set_denominator(denominator);  //РєРѕРіРґР° РЅСѓР¶РЅР° С„РёР»СЊС‚СЂР°С†РёСЏ РґР°РЅРЅС‹С…, РґР°Р¶Рµ РІРЅСѓС‚СЂРё РєР»Р°СЃСЃР° Р»СѓС‡С€Рµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ set РјРµС‚РѕРґС‹
 		cout << "Constructor:\t\t" << this << endl;
 	}
 
@@ -159,14 +159,14 @@ public:
 
 	Fraction& to_proper()
 	{
-		//Выделяет из неправильной дроби целую часть
+		//Р’С‹РґРµР»СЏРµС‚ РёР· РЅРµРїСЂР°РІРёР»СЊРЅРѕР№ РґСЂРѕР±Рё С†РµР»СѓСЋ С‡Р°СЃС‚СЊ
 		integer += numenator / denominator;
 		numenator %= denominator;
 		return *this;
 	}
 	Fraction& to_improper()
 	{
-		//целую часть интегрирует в числитель
+		//С†РµР»СѓСЋ С‡Р°СЃС‚СЊ РёРЅС‚РµРіСЂРёСЂСѓРµС‚ РІ С‡РёСЃР»РёС‚РµР»СЊ
 		numenator += integer * denominator;
 		integer = 0;
 		return *this;
@@ -211,8 +211,8 @@ Fraction operator*(Fraction left, Fraction right)
 		(
 		left.get_numenator() * right.get_numenator(),
 		left.get_denominator() * right.get_denominator()
-		).to_proper(); //явно вызываем конструктор
-	// этот явно вызыванный конструктор, прямо в return создает временный безимянный объект типа Fraction и возвращает его на место вызова
+		).to_proper(); //СЏРІРЅРѕ РІС‹Р·С‹РІР°РµРј РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	// СЌС‚РѕС‚ СЏРІРЅРѕ РІС‹Р·С‹РІР°РЅРЅС‹Р№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ, РїСЂСЏРјРѕ РІ return СЃРѕР·РґР°РµС‚ РІСЂРµРјРµРЅРЅС‹Р№ Р±РµР·РёРјСЏРЅРЅС‹Р№ РѕР±СЉРµРєС‚ С‚РёРїР° Fraction Рё РІРѕР·РІСЂР°С‰Р°РµС‚ РµРіРѕ РЅР° РјРµСЃС‚Рѕ РІС‹Р·РѕРІР°
 }
 
 Fraction operator/(Fraction left, Fraction right)
@@ -398,11 +398,11 @@ void main()
 	//A.print();
 	if (A >= C)
 	{
-		cout << "верно" << endl;
+		cout << "РІРµСЂРЅРѕ" << endl;
 	}
 	else
 	{
-		cout << "не верно" << endl;
+		cout << "РЅРµ РІРµСЂРЅРѕ" << endl;
 	}
 
 	//cout << A << endl;
