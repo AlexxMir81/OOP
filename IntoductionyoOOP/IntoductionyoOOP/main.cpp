@@ -75,7 +75,7 @@ public:
 		this->y++;
 		return *this;
 	}
-	Point& operator++(int) // suffix increment
+	Point operator++(int) // suffix increment
 	{
 		Point old = *this;
 		this->x++;
@@ -216,6 +216,7 @@ void main()
 	Point A(2, 3);
 	//Point B(3, 4);
 	Point B = A;
+	//B++;
 	if (A == B++)
 	{
 		cout << "Точки равные" << endl;
