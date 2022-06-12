@@ -1,4 +1,4 @@
-#pragma warning(disable:4326)
+п»ї#pragma warning(disable:4326)
 
 #include<iostream>
 #include<Windows.h>
@@ -15,8 +15,8 @@ String operator+(const String& left, const String& right);
 
 class String
 {
-	int size;	//Размер строки
-	char* str;	//Указатель на строку в динамической памяти
+	int size;	//Р Р°Р·РјРµСЂ СЃС‚СЂРѕРєРё
+	char* str;	//РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃС‚СЂРѕРєСѓ РІ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РїР°РјСЏС‚Рё
 public:
 	int get_size()const
 	{
@@ -34,7 +34,7 @@ public:
 	//					Constructors:
 	explicit String(int size = 80)
 	{
-		//Благодаря принимаемому параметру size мы можем создавать строки заданного размера
+		//Р‘Р»Р°РіРѕРґР°СЂСЏ РїСЂРёРЅРёРјР°РµРјРѕРјСѓ РїР°СЂР°РјРµС‚СЂСѓ size РјС‹ РјРѕР¶РµРј СЃРѕР·РґР°РІР°С‚СЊ СЃС‚СЂРѕРєРё Р·Р°РґР°РЅРЅРѕРіРѕ СЂР°Р·РјРµСЂР°
 		this->size = size;
 		this->str = new char[size] {};
 		cout << "DefaultConst:\t" << this << endl;
@@ -42,14 +42,14 @@ public:
 	String(const char* str)
 	{
 		//cout << sizeof(str) << endl;
-		this->size = StringLength(str) + 1;	//Сохраняем размер строки в Байтах, с учетом Терминирующего нуля.
+		this->size = StringLength(str) + 1;	//РЎРѕС…СЂР°РЅСЏРµРј СЂР°Р·РјРµСЂ СЃС‚СЂРѕРєРё РІ Р‘Р°Р№С‚Р°С…, СЃ СѓС‡РµС‚РѕРј РўРµСЂРјРёРЅРёСЂСѓСЋС‰РµРіРѕ РЅСѓР»СЏ.
 		this->str = new char[size] {};
 		for (int i = 0; i < size; i++)this->str[i] = str[i];
 		cout << "Constructor:\t" << this << endl;
 	}
 	String(const String& other)
 	{
-		//Глубокое копирование (Deep copy)
+		//Р“Р»СѓР±РѕРєРѕРµ РєРѕРїРёСЂРѕРІР°РЅРёРµ (Deep copy)
 		this->size = other.size;
 		this->str = new char[size] {};
 		for (int i = 0; i < size; i++)this->str[i] = other.str[i];
@@ -57,9 +57,9 @@ public:
 	}
 	~String()
 	{
-		delete[] this->str;	//Если конструктор выделяет память при помощи оператора new,
-		//то деструктор обязательно должен освобождать эту память оператором delete[],
-		//в противном случае будет возникать утечка памяти.
+		delete[] this->str;	//Р•СЃР»Рё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РІС‹РґРµР»СЏРµС‚ РїР°РјСЏС‚СЊ РїСЂРё РїРѕРјРѕС‰Рё РѕРїРµСЂР°С‚РѕСЂР° new,
+		//С‚Рѕ РґРµСЃС‚СЂСѓРєС‚РѕСЂ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РґРѕР»Р¶РµРЅ РѕСЃРІРѕР±РѕР¶РґР°С‚СЊ СЌС‚Сѓ РїР°РјСЏС‚СЊ РѕРїРµСЂР°С‚РѕСЂРѕРј delete[],
+		//РІ РїСЂРѕС‚РёРІРЅРѕРј СЃР»СѓС‡Р°Рµ Р±СѓРґРµС‚ РІРѕР·РЅРёРєР°С‚СЊ СѓС‚РµС‡РєР° РїР°РјСЏС‚Рё.
 		cout << "Destructor:\t" << this << endl;
 	}
 
@@ -72,7 +72,7 @@ public:
 		int b = 3;
 		a = b;*/
 		delete[] this->str;
-		//Глубокое копирование (Deep copy)
+		//Р“Р»СѓР±РѕРєРѕРµ РєРѕРїРёСЂРѕРІР°РЅРёРµ (Deep copy)
 		this->size = other.size;
 		this->str = new char[size] {};
 		for (int i = 0; i < size; i++)this->str[i] = other.str[i];
@@ -129,7 +129,7 @@ void main()
 	SetConsoleOutputCP(1251);
 
 #ifdef NULL_TERMINATED_LINES
-	'\0';//ASCII-символ с кодом 0.	NULL Terminator
+	'\0';//ASCII-СЃРёРјРІРѕР» СЃ РєРѕРґРѕРј 0.	NULL Terminator
 //C-strings - NULL Terminated Lines
 //char str[] = { 'H', 'e', 'l', 'l', 'o', 0 };
 /*char str[] = "Hello";
@@ -141,7 +141,7 @@ str1[2] = 0;*/
 
 	const int SIZE = 20;
 	char str[SIZE] = {};
-	cout << "Введите строку: ";
+	cout << "Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ: ";
 	//SetConsoleCP(1251);
 	//cin >> str;
 	cin.getline(str, SIZE);
@@ -153,8 +153,8 @@ str1[2] = 0;*/
 	String str1;
 	str1.print();
 
-	//String str2 = 25;	//Преобразование int в String запрещено при помощи explicit
-	String str2(25);	//explicit конструктор можно вызвать только так
+	//String str2 = 25;	//РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ int РІ String Р·Р°РїСЂРµС‰РµРЅРѕ РїСЂРё РїРѕРјРѕС‰Рё explicit
+	String str2(25);	//explicit РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РјРѕР¶РЅРѕ РІС‹Р·РІР°С‚СЊ С‚РѕР»СЊРєРѕ С‚Р°Рє
 	str2.print();
 
 	cout << sizeof("Hello") << endl;
@@ -184,7 +184,7 @@ str1[2] = 0;*/
 
 int StringLength(const char* str)
 {
-	//Считает размер строки в символах, т.е., без учета Терминирующего нуля
+	//РЎС‡РёС‚Р°РµС‚ СЂР°Р·РјРµСЂ СЃС‚СЂРѕРєРё РІ СЃРёРјРІРѕР»Р°С…, С‚.Рµ., Р±РµР· СѓС‡РµС‚Р° РўРµСЂРјРёРЅРёСЂСѓСЋС‰РµРіРѕ РЅСѓР»СЏ
 	int i = 0;
 	for (; str[i]; i++);
 	return i;
